@@ -3,10 +3,27 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import 'react-toastify/dist/ReactToastify.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+import {BrowserRouter as Router} from 'react-router-dom';
+
+
+const store = createStore(
+  rootReducer,
+  composeWithDevTools(
+    applyMiddleware(thunk)
+  )
+ 
+)
 
 ReactDOM.render(
   <React.StrictMode>
+   <Router>
     <App />
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );
